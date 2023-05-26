@@ -1,0 +1,7 @@
+.app {
+    @apply tw-w-full tw-bg-yellow-300 tw-flex tw-items-center tw-justify-center;
+
+    & > .container {
+        @apply tw-shadow-md tw-p-5 tw-bg-black tw-text-center tw-text-white tw-text-lg;
+    }
+}

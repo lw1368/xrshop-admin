@@ -1,0 +1,6 @@
+/* src/styles/app.css */
+html,
+body,
+#root {
+    @apply tw-bg-white tw-h-[100vh] tw-w-full tw-flex;
+}
