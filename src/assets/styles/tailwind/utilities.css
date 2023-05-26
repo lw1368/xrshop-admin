@@ -1,6 +1,2 @@
-@layer base {
-    html {
-        font-family: var(--font-family-base);
-        font-size: var(--font-size-base);
-    }
+@layer utilities {
 }
