@@ -1,6 +1,6 @@
 import React from "react";
 
-import useCounterStore from "@/store/counters";
+import useCounterStore from "@/stores/counters";
 
 const Home: React.FC = () => {
   const counter = useCounterStore((state) => state.counter);

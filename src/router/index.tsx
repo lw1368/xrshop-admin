@@ -5,12 +5,14 @@ import type { RouteObject } from "react-router-dom";
 import React from "react";
 
 import About from "@/pages/about";
+import BasicLayout from "@/pages/layout/basic.layout";
 
 const Home = React.lazy(() => import("../pages/home"));
 
 const routes: RouteObject[] = [
   {
     path: "/",
+    element: <BasicLayout />,
     children: [
       {
         index: true,
