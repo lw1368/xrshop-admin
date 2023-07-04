@@ -9,7 +9,7 @@ interface GlobalState {
 const useGlobalStore = create<GlobalState>()(
   persist(
     (set) => ({
-      primaryColor: "#00b96b",
+      primaryColor: "#ed6c00",
       setColor: (color) => set(() => ({ primaryColor: color })),
     }),
     {

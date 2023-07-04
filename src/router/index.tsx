@@ -1,42 +1,70 @@
-import { createBrowserRouter, Navigate } from "react-router-dom";
+import { Navigate, createBrowserRouter } from "react-router-dom";
 
-import type { RouteObject } from "react-router-dom";
+import { UserOutlined } from "@ant-design/icons";
 
-import React from "react";
+import BasicLayout from "@/pages/layout";
+import Home from "@/pages/home";
+import Login from "@/pages/login";
+import Page403 from "@/pages/403";
+import Page404 from "@/pages/404";
 
-import About from "@/pages/about";
-import BasicLayout from "@/pages/layout/basic.layout";
-
-const Home = React.lazy(() => import("../pages/home"));
-
-const routes: RouteObject[] = [
+const routes = [
   {
-    path: "/",
+    id: "layout",
     element: <BasicLayout />,
     children: [
       {
-        index: true,
-        element: <Navigate to="/home" replace />,
-      },
-      {
         path: "/home",
-        meta: {
-          title: "home",
-          icon: "home",
-        },
-        Permissions: [],
         element: <Home />,
+        icon: <UserOutlined rev={undefined} />,
+        title: "首页",
       },
       {
-        path: "about",
-        element: <About />,
+        path: "systems",
+        title: "系统设置",
+        icon: <UserOutlined rev={undefined} />,
+        children: [
+          {
+            path: "/systems/users",
+            title: "用户列表",
+            element: <Home />,
+          },
+          {
+            path: "/systems/roles",
+            title: "角色列表",
+            element: <Home />,
+          },
+          {
+            path: "/systems/permissions",
+            title: "权限列表",
+            element: <Home />,
+          },
+        ],
       },
     ],
   },
+  {
+    path: "/",
+    element: <Navigate to="/home" />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "*",
+    element: <Navigate to="/404" />,
+  },
+  {
+    path: "/404",
+    element: <Page404 />,
+  },
+  {
+    path: "/403",
+    element: <Page403 />,
+  },
 ];
 
-const router = createBrowserRouter(routes, {
-  basename: "/",
-});
+export { routes };
 
-export default router;
+export default createBrowserRouter(routes);

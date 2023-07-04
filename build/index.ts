@@ -3,7 +3,6 @@ import merge from "deepmerge";
 
 import { Configure } from "./types";
 import { pathResolve } from "./utils";
-import { createPlugins } from "./plugins";
 
 export const createConfig = (
   params: ConfigEnv,
@@ -12,6 +11,17 @@ export const createConfig = (
   const isBuild = params.command === "build";
   return merge<UserConfig>(
     {
+      server: {
+        // port: 3000,
+        cors: true,
+        proxy: {
+          "/graphql": {
+            target: "http://localhost:3000/",
+            changeOrigin: true,
+            // rewrite: (path) => path.replace(/^\/graphql/, ''),
+          },
+        },
+      },
       resolve: {
         alias: {
           "@": pathResolve("src"),
@@ -22,7 +32,13 @@ export const createConfig = (
           localsConvention: "camelCaseOnly",
         },
       },
-      plugins: createPlugins(isBuild),
+      // plugins: [
+      //   createPlugins(isBuild),
+      //   legacy({
+      //     targets: ['defaults', 'not IE 11']
+      //   }),
+      // ],
+      // base: './',
       server: {
         // port: 8080, // 开发环境启动的端口
         proxy: {

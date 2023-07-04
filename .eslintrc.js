@@ -11,7 +11,7 @@ module.exports = {
     },
   },
   env: {
-    es6: true,
+    es2021: true,
     browser: true,
     jest: true,
     node: true,
@@ -106,7 +106,7 @@ module.exports = {
     ],
     // 自动删除未使用的导入
     // https://github.com/sweepline/eslint-plugin-unused-imports
-    "no-unused-vars": 0,
+    "no-unused-vars": 1,
     "@typescript-eslint/no-unused-vars": 0,
     "unused-imports/no-unused-imports": 1,
     "unused-imports/no-unused-vars": [
@@ -119,6 +119,7 @@ module.exports = {
     ],
 
     /* ********************************** Typescript ********************************** */
+    "@typescript-eslint/no-namespace": "off",
     "@typescript-eslint/no-empty-interface": 0,
     "@typescript-eslint/no-this-alias": 0,
     "@typescript-eslint/no-var-requires": 0,
