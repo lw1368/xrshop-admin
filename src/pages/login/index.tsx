@@ -12,13 +12,17 @@ import {
   ProFormCheckbox,
   ProFormText,
 } from "@ant-design/pro-components";
-import { Divider, Space, Tabs } from "antd";
+import { Divider, Space, Tabs, message, App } from "antd";
 import type { CSSProperties } from "react";
 import { useState, useEffect } from "react";
 
-// import { useMutation } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 
-// import { LOGIN, SEND_CODE_MSG } from "@/graphql/login";
+import { useNavigate } from "react-router-dom";
+
+import storage from "@/utils/storage";
+
+import { LOGIN, SEND_CODE_MSG } from "@/graphql/login";
 
 type LoginType = "phone" | "account";
 interface LoginValue {
@@ -37,21 +41,27 @@ const Login = () => {
   useEffect(() => {
     document.title = "XrShop - 登录";
   }, []);
-  //   const [run] = useMutation(SEND_CODE_MSG);
-  //   const [login] = useMutation(LOGIN);
-  //   const nav = useNavigate();
+  const [run] = useMutation(SEND_CODE_MSG);
+  const [login] = useMutation(LOGIN);
+  // const navigate = useNavigate();
 
   const [loginType, setLoginType] = useState<LoginType>("phone");
 
   const loginHandler = async (value: LoginValue) => {
-    console.log(value);
-    // const res = await login({
-    //   variables: value,
-    // });
+    const res = await login({
+      variables: value,
+    });
 
-    // if (res.data.login.code === 200) {
-    //   nav("/");
-    // }
+    if (res.data.login.code === 200) {
+      storage.set("token", res.data.login.data);
+      message.success(res.data.login.message);
+      const params = new URLSearchParams(window.location.search);
+      setTimeout(() => {
+        window.location.href = params.get("callback") || "/";
+      });
+    } else {
+      message.error(res.data.login.message);
+    }
   };
 
   return (
@@ -235,19 +245,19 @@ const Login = () => {
               ]}
               onGetCaptcha={async (phone: string) => {
                 // 获取验证码
-                // const res = await run({
-                //   variables: {
-                //     phone,
-                //   },
-                // });
-                // if (res.data.sendCodeMsg.code === 200) {
-                //   // message.success(res.data.sendCodeMsg.message);
-                //   message.success(
-                //     `获取验证码成功！验证码为：${res.data.sendCodeMsg.data}`
-                //   );
-                // } else {
-                //   message.error(res.data.sendCodeMsg.message);
-                // }
+                const res = await run({
+                  variables: {
+                    phone,
+                  },
+                });
+                if (res.data.sendCodeMsg.code === 200) {
+                  // message.success(res.data.sendCodeMsg.message);
+                  message.success(
+                    `获取验证码成功！验证码为：${res.data.sendCodeMsg.data}`
+                  );
+                } else {
+                  message.error(res.data.sendCodeMsg.message);
+                }
               }}
             />
           </>

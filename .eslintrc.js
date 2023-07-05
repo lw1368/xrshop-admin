@@ -106,9 +106,9 @@ module.exports = {
     ],
     // 自动删除未使用的导入
     // https://github.com/sweepline/eslint-plugin-unused-imports
-    "no-unused-vars": 1,
+    "no-unused-vars": 0,
     "@typescript-eslint/no-unused-vars": 0,
-    "unused-imports/no-unused-imports": 1,
+    "unused-imports/no-unused-imports": 0,
     "unused-imports/no-unused-vars": [
       "error",
       {

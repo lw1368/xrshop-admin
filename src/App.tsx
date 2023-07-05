@@ -2,6 +2,7 @@
 import { ConfigProvider, App as AntdApp } from "antd";
 
 import zhCN from "antd/locale/zh_CN";
+import { ApolloProvider } from "@apollo/client";
 
 import dayjs from "dayjs";
 import "dayjs/locale/zh-cn";
@@ -9,8 +10,9 @@ import "antd/dist/reset.css";
 import { RouterProvider } from "react-router-dom";
 
 import useGlobalStore from "./stores/global";
-
+import AntdGlobal from "./utils/antdGlobal";
 import router from "./router";
+import { client } from "./utils/apollo";
 
 dayjs.locale("zh-cn");
 
@@ -26,10 +28,13 @@ const App = () => {
         },
       }}
     >
-      <AntdApp>
-        {/* <AntdGlobal /> */}
-        <RouterProvider router={router} />
-      </AntdApp>
+      <ApolloProvider client={client}>
+        <AntdApp>
+          <AntdGlobal />
+
+          <RouterProvider router={router} />
+        </AntdApp>
+      </ApolloProvider>
     </ConfigProvider>
   );
 };

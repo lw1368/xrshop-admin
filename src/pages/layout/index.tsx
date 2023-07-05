@@ -2,9 +2,9 @@ import { Layout } from "antd";
 import React from "react";
 import { Outlet } from "react-router-dom";
 
-import SideMenu from "@/components/Menu";
-import NavFooter from "@/components/Navfooter";
-import NavHeader from "@/components/NavHeader";
+import SideMenu from "@/components/menu";
+import NavFooter from "@/components/navfooter";
+import NavHeader from "@/components/navheader";
 
 import { useStore } from "@/stores";
 
