@@ -54,6 +54,12 @@ const SideMenu: React.FC = () => {
     setSelectedKeys([key]);
     navigate(key);
   };
+
+  // 展开当前选中的菜单栏
+  const renderOpenKeys = () => {
+    const arr = pathname.split("/").slice(0, -1);
+    return [arr[1]];
+  };
   return (
     <div>
       <div className={styles.logo} onClick={handleLogoClick}>
@@ -64,6 +70,7 @@ const SideMenu: React.FC = () => {
         mode="inline"
         theme="dark"
         selectedKeys={selectedKeys}
+        defaultOpenKeys={renderOpenKeys()}
         onClick={handleMenuClick}
         items={menuItems}
       />

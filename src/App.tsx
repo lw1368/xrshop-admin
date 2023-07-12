@@ -13,6 +13,7 @@ import useGlobalStore from "./stores/global";
 import AntdGlobal from "./utils/antdGlobal";
 import router from "./router";
 import { client } from "./utils/apollo";
+import "./app.scss";
 
 dayjs.locale("zh-cn");
 

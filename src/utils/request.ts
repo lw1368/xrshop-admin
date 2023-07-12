@@ -4,6 +4,8 @@ import env from "@/config";
 
 import { showLoading, hideLoading } from "@/components/loading";
 
+import { Result } from "@/types/api";
+
 import storage from "./storage";
 
 import { message } from "./antdGlobal";

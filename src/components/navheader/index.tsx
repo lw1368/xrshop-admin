@@ -1,16 +1,33 @@
-import React from "react";
-import { Breadcrumb, Dropdown, Switch } from "antd";
+import React, { ChangeEvent } from "react";
+import {
+  Avatar,
+  Badge,
+  Breadcrumb,
+  ColorPicker,
+  Dropdown,
+  Space,
+  Switch,
+} from "antd";
 import type { MenuProps } from "antd";
 
-import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
+import {
+  BellOutlined,
+  MenuFoldOutlined,
+  MenuUnfoldOutlined,
+} from "@ant-design/icons";
+
+import { Color } from "antd/es/color-picker";
 
 import storage from "@/utils/storage";
 import { useStore } from "@/stores";
+
+import useGlobalStore from "@/stores/global";
 
 import styles from "./index.module.scss";
 
 const NavHeader: React.FC = () => {
   const { userInfo, collapsed, updateCollapsed } = useStore();
+  const { primaryColor, setColor } = useGlobalStore();
   const breadList = [
     {
       title: "首页",
@@ -23,7 +40,7 @@ const NavHeader: React.FC = () => {
   const items: MenuProps["items"] = [
     {
       key: "email",
-      label: `邮箱：`, // ${userInfo.userEmail}`,
+      label: `邮箱：${userInfo.userEmail}`,
     },
     {
       key: "logout",
@@ -44,6 +61,9 @@ const NavHeader: React.FC = () => {
       )}`;
     }
   };
+  const handleColorChange = (value: Color, hex: string) => {
+    setColor(hex);
+  };
   return (
     <div className={styles.navHeader}>
       <div className={styles.left}>
@@ -57,14 +77,26 @@ const NavHeader: React.FC = () => {
         <Breadcrumb items={breadList} style={{ marginLeft: 10 }} />
       </div>
       <div className="right">
-        <Switch
+        <Space size={20}>
+          <Badge count={12}>
+            <BellOutlined style={{ fontSize: 24 }} rev={undefined} />
+          </Badge>
+          <ColorPicker value={primaryColor} onChange={handleColorChange} />
+          {/* <Switch
           checkedChildren="黑暗"
           unCheckedChildren="默认"
           style={{ marginRight: 10 }}
-        />
-        <Dropdown menu={{ items, onClick }} trigger={["click"]}>
-          <span className={styles.nickName}>{userInfo.userName || "123"}</span>
-        </Dropdown>
+        /> */}
+          <Dropdown menu={{ items, onClick }} trigger={["click"]}>
+            <Avatar
+              src="https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png"
+              style={{ cursor: "pointer" }}
+            />
+            {/* <span className={styles.nickName}>
+              {userInfo.userName || "123"}
+            </span> */}
+          </Dropdown>
+        </Space>
       </div>
     </div>
   );

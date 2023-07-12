@@ -7,6 +7,8 @@ import Home from "@/pages/home";
 import Login from "@/pages/login";
 import Page403 from "@/pages/403";
 import Page404 from "@/pages/404";
+import UserList from "@/pages/users";
+import BrandList from "@/pages/brand";
 
 const routes = [
   {
@@ -20,6 +22,93 @@ const routes = [
         title: "首页",
       },
       {
+        path: "posters",
+        title: "营销管理",
+        icon: <UserOutlined rev={undefined} />,
+        children: [
+          {
+            path: "/posters/carousel",
+            title: "轮播列表",
+            element: <Home />,
+          },
+          {
+            path: "/posters/coupons",
+            title: "优惠卷",
+            element: <Home />,
+          },
+        ],
+      },
+      {
+        path: "goods",
+        title: "商品中心",
+        icon: <UserOutlined rev={undefined} />,
+        children: [
+          {
+            path: "/goods/list",
+            title: "商品列表",
+            element: <Home />,
+          },
+        ],
+      },
+      {
+        path: "brands",
+        title: "品牌管理",
+        icon: <UserOutlined rev={undefined} />,
+        children: [
+          {
+            path: "/brands/list",
+            title: "品牌列表",
+            element: <BrandList />,
+          },
+        ],
+      },
+      {
+        path: "categories",
+        title: "分类管理",
+        icon: <UserOutlined rev={undefined} />,
+        children: [
+          {
+            path: "/categories/list",
+            title: "分类列表",
+            element: <Home />,
+          },
+        ],
+      },
+      {
+        path: "orders",
+        title: "订单中心",
+        icon: <UserOutlined rev={undefined} />,
+        children: [
+          {
+            path: "/orders/list",
+            title: "订单列表",
+            element: <Home />,
+          },
+          {
+            path: "/orders/pays",
+            title: "支付列表",
+            element: <Home />,
+          },
+        ],
+      },
+      {
+        path: "stores",
+        title: "仓库管理",
+        icon: <UserOutlined rev={undefined} />,
+        children: [
+          {
+            path: "/stores/list",
+            title: "发货列表",
+            element: <Home />,
+          },
+          {
+            path: "/stores/pays",
+            title: "商品库存",
+            element: <Home />,
+          },
+        ],
+      },
+      {
         path: "systems",
         title: "系统设置",
         icon: <UserOutlined rev={undefined} />,
@@ -27,7 +116,7 @@ const routes = [
           {
             path: "/systems/users",
             title: "用户列表",
-            element: <Home />,
+            element: <UserList />,
           },
           {
             path: "/systems/roles",
@@ -37,6 +126,21 @@ const routes = [
           {
             path: "/systems/permissions",
             title: "权限列表",
+            element: <Home />,
+          },
+          {
+            path: "/systems/address",
+            title: "地址管理",
+            element: <Home />,
+          },
+          {
+            path: "/systems/pays",
+            title: "支付方式",
+            element: <Home />,
+          },
+          {
+            path: "/systems/platform",
+            title: "平台配置",
             element: <Home />,
           },
         ],

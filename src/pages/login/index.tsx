@@ -12,13 +12,15 @@ import {
   ProFormCheckbox,
   ProFormText,
 } from "@ant-design/pro-components";
-import { Divider, Space, Tabs, message, App } from "antd";
+import { Divider, Space, Tabs } from "antd";
 import type { CSSProperties } from "react";
 import { useState, useEffect } from "react";
 
 import { useMutation } from "@apollo/client";
 
 import { useNavigate } from "react-router-dom";
+
+import { message } from "@/utils/antdGlobal";
 
 import storage from "@/utils/storage";
 
@@ -38,12 +40,15 @@ const iconStyles: CSSProperties = {
 };
 
 const Login = () => {
+  const navigate = useNavigate();
+
   useEffect(() => {
     document.title = "XrShop - 登录";
+    if (storage.get("token")) navigate("/");
   }, []);
+
   const [run] = useMutation(SEND_CODE_MSG);
   const [login] = useMutation(LOGIN);
-  // const navigate = useNavigate();
 
   const [loginType, setLoginType] = useState<LoginType>("phone");
 
