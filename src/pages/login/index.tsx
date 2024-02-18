@@ -26,6 +26,8 @@ import storage from "@/utils/storage";
 
 import { LOGIN, SEND_CODE_MSG } from "@/graphql/login";
 
+import request from "@/utils/request";
+
 type LoginType = "phone" | "account";
 interface LoginValue {
   phone: string;
@@ -249,6 +251,14 @@ const Login = () => {
                 },
               ]}
               onGetCaptcha={async (phone: string) => {
+                const res1 = await request.post<string>(
+                  "http://106.52.251.215:8080/message"
+                );
+
+                console.log(res1);
+
+                return;
+
                 // 获取验证码
                 const res = await run({
                   variables: {

@@ -21,7 +21,7 @@ export const createConfig = (
             // rewrite: (path) => path.replace(/^\/graphql/, ''),
           },
           "/api": {
-            target: "http://localhost:3000/",
+            target: "http://106.52.251.215:8080/",
             changeOrigin: true,
             rewrite: (path) => path.replace(/^\/api/, ""),
           },

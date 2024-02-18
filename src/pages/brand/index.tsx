@@ -79,7 +79,17 @@ const BrandList = () => {
       dataIndex: "userEmail",
       key: "userEmail",
     },
-
+    {
+      title: "状态",
+      dataIndex: "state",
+      key: "state",
+      render(state: number) {
+        return {
+          1: "使用中",
+          2: "未使用",
+        }[state];
+      },
+    },
     {
       title: "操作",
       key: "address",

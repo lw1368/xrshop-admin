@@ -10,9 +10,9 @@ import { IAction } from "@/types/modal";
 import { BrandItem } from "@/types/api";
 import { message, modal } from "@/utils/antdGlobal";
 
-import CreateBrand from "./modal";
+import CreateCategory from "./create";
 
-const BrandList = () => {
+const CategoryList = () => {
   const [form] = useForm();
   const brandRef = useRef<{
     open: (type: IAction, data?: BrandItem) => void;
@@ -148,9 +148,9 @@ const BrandList = () => {
           columns={columns}
         />
       </div>
-      <CreateBrand mRef={brandRef} update={() => {}} />
+      <CreateCategory mRef={brandRef} update={() => {}} />
     </div>
   );
 };
 
-export default BrandList;
+export default CategoryList;

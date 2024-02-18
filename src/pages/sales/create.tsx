@@ -5,7 +5,7 @@ import { BrandItem } from "@/types/api";
 import { IAction, IModalProp } from "@/types/modal";
 import { message } from "@/utils/antdGlobal";
 
-const CreateRole = (props: IModalProp<BrandItem>) => {
+const CreateOrder = (props: IModalProp<BrandItem>) => {
   const [visible, setVisible] = useState(false);
   const [action, setAction] = useState<IAction>("create");
   const [form] = Form.useForm();
@@ -61,4 +61,4 @@ const CreateRole = (props: IModalProp<BrandItem>) => {
   );
 };
 
-export default CreateRole;
+export default CreateOrder;

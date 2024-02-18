@@ -9,6 +9,14 @@ import Page403 from "@/pages/403";
 import Page404 from "@/pages/404";
 import UserList from "@/pages/users";
 import BrandList from "@/pages/brand";
+import CategoryList from "@/pages/category";
+import RoleList from "@/pages/roles";
+import GoodsList from "@/pages/goods";
+import OrderList from "@/pages/orders";
+import AddressList from "@/pages/address";
+import CouponsList from "@/pages/sales/coupons";
+import CarouselList from "@/pages/sales/carousel";
+import StorageList from "@/pages/storage";
 
 const routes = [
   {
@@ -29,12 +37,12 @@ const routes = [
           {
             path: "/posters/carousel",
             title: "轮播列表",
-            element: <Home />,
+            element: <CarouselList />,
           },
           {
             path: "/posters/coupons",
             title: "优惠卷",
-            element: <Home />,
+            element: <CouponsList />,
           },
         ],
       },
@@ -46,7 +54,7 @@ const routes = [
           {
             path: "/goods/list",
             title: "商品列表",
-            element: <Home />,
+            element: <GoodsList />,
           },
         ],
       },
@@ -70,7 +78,7 @@ const routes = [
           {
             path: "/categories/list",
             title: "分类列表",
-            element: <Home />,
+            element: <CategoryList />,
           },
         ],
       },
@@ -82,7 +90,7 @@ const routes = [
           {
             path: "/orders/list",
             title: "订单列表",
-            element: <Home />,
+            element: <OrderList />,
           },
           {
             path: "/orders/pays",
@@ -99,7 +107,7 @@ const routes = [
           {
             path: "/stores/list",
             title: "发货列表",
-            element: <Home />,
+            element: <StorageList />,
           },
           {
             path: "/stores/pays",
@@ -121,7 +129,7 @@ const routes = [
           {
             path: "/systems/roles",
             title: "角色列表",
-            element: <Home />,
+            element: <RoleList />,
           },
           {
             path: "/systems/permissions",
@@ -131,7 +139,7 @@ const routes = [
           {
             path: "/systems/address",
             title: "地址管理",
-            element: <Home />,
+            element: <AddressList />,
           },
           {
             path: "/systems/pays",

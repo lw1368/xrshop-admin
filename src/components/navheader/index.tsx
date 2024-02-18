@@ -23,6 +23,8 @@ import { useStore } from "@/stores";
 
 import useGlobalStore from "@/stores/global";
 
+import { useDebounce } from "@/utils/useDebounce";
+
 import styles from "./index.module.scss";
 
 const NavHeader: React.FC = () => {
@@ -63,6 +65,7 @@ const NavHeader: React.FC = () => {
   };
   const handleColorChange = (value: Color, hex: string) => {
     setColor(hex);
+    // useDebounce(setColor(hex), 500);
   };
   return (
     <div className={styles.navHeader}>
